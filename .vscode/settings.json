@@ -1,0 +1,81 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "explicit",
+    "quickfix.biome": "explicit"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    ".nyc_output": true,
+    ".vscode": false,
+    "coverage": true,
+    "dist": true,
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/.swc": true,
+    "**/.cache": true,
+    "**/dist": true
+  },
+  "cSpell.words": [
+    "clsx",
+    "directus",
+    "icatalog",
+    "meilisearch",
+    "nextjs",
+    "Noto",
+    "nums",
+    "nuqs",
+    "pdfmake",
+    "picklist",
+    "radash",
+    "redbox",
+    "swiper",
+    "tabler",
+    "tailwindcss",
+    "tiktok",
+    "usecase",
+    "usecases",
+    "valibot"
+  ],
+  "files.watcherExclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "search.exclude": {
+    "**/routeTree.gen.ts": true,
+    "**/node_modules": true,
+    "**/dist": true
+  },
+  "files.readonlyInclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "eslint.enable": false
+}

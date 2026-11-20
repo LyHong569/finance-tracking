@@ -24,6 +24,7 @@ import {
 	useSidebar,
 } from "@/components/ui/sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ROUTES } from "@/configs/routes";
 import { cn } from "@/lib/utils";
 
 import { DashboardHeader } from "./dashboard-header";
@@ -35,13 +36,13 @@ interface NavItem {
 }
 
 const mainNavItems: NavItem[] = [
-	{ label: "Overview", to: "/", icon: IconLayoutDashboard },
-	{ label: "Transactions", to: "/transactions", icon: IconReceipt2 },
-	{ label: "Budgets", to: "/budgets", icon: IconPigMoney },
+	{ label: "Overview", to: ROUTES.OVERVIEW, icon: IconLayoutDashboard },
+	{ label: "Transactions", to: ROUTES.TRANSACTIONS, icon: IconReceipt2 },
+	{ label: "Budgets", to: ROUTES.BUDGETS, icon: IconPigMoney },
 ];
 
 const generalNavItems: NavItem[] = [
-	{ label: "Settings", to: "/settings", icon: IconSettings },
+	{ label: "Settings", to: ROUTES.SETTINGS, icon: IconSettings },
 ];
 
 export const DashboardLayout: React.FC<React.PropsWithChildren> = ({
@@ -120,7 +121,7 @@ const MenuItem: React.FC<{ item: NavItem }> = ({ item }) => {
 		<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">
 			<Link
 				to={item.to}
-				activeOptions={{ exact: item.to === "/" }}
+				activeOptions={{ exact: item.to === ROUTES.OVERVIEW }}
 				onClick={() => {
 					if (isMobile) {
 						setOpenMobile(false);

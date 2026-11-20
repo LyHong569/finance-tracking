@@ -3,21 +3,20 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "cn";
 
 const buttonVariants = cva(
-	"group/button 0 0) 0 0) 0 0)/50 0.245 27.325) 0.245 27.325)/20 0.245 27.325)/50 0.245 27.325)/40 0 0 / 10%) 0 0) 0 0)/50 0.191 22.216) 0.191 22.216)/20 0.191 22.216)/50 0.191 22.216)/40 inline-flex shrink-0 select-none items-center justify-center whitespace-nowrap rounded-lg border border-oklch(0.922 border-transparent bg-clip-padding font-medium text-sm outline-none transition-all focus-visible:border-oklch(0.708 focus-visible:ring-3 focus-visible:ring-oklch(0.708 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-oklch(0.577 aria-invalid:ring-3 aria-invalid:ring-oklch(0.577 dark:border-oklch(1 dark:aria-invalid:border-oklch(0.577 dark:aria-invalid:border-oklch(0.704 dark:dark:aria-invalid:border-oklch(0.704 dark:aria-invalid:ring-oklch(0.577 dark:aria-invalid:ring-oklch(0.704 dark:dark:aria-invalid:ring-oklch(0.704 dark:focus-visible:border-oklch(0.556 dark:focus-visible:ring-oklch(0.556 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+	"group/button inline-flex shrink-0 select-none items-center justify-center whitespace-nowrap rounded-lg border border-transparent bg-clip-padding font-medium text-sm outline-none transition-all focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
 	{
 		variants: {
 			variant: {
-				default:
-					"0 0) 0 0) 0 0)/80 0 0) 0 0) 0 0)/80 bg-oklch(0.205 text-oklch(0.985 hover:bg-oklch(0.205 dark:bg-oklch(0.922 dark:text-oklch(0.205 dark:hover:bg-oklch(0.922",
+				default: "bg-primary text-primary-foreground hover:bg-primary/80",
 				outline:
-					"0 0) 0 0) 0 0) 0 0) 0 0) 0 0) 0 0) 0 0)/30 0 0)/50 0 0 / 10%) 0 0) 0 0) 0 0) 0 0) 0 0) 0 0 / 15%) 0 0 / 15%)/30 0 0 / 15%)/50 border-oklch(0.922 bg-oklch(1 hover:bg-oklch(0.97 hover:text-oklch(0.145 aria-expanded:bg-oklch(0.97 aria-expanded:text-oklch(0.145 dark:border-oklch(0.922 dark:border-oklch(1 dark:dark:border-oklch(1 dark:bg-oklch(0.145 dark:bg-oklch(0.922 dark:dark:bg-oklch(1 dark:aria-expanded:bg-oklch(0.269 dark:aria-expanded:text-oklch(0.985 dark:dark:hover:bg-oklch(1 dark:hover:bg-oklch(0.269 dark:hover:bg-oklch(0.922 dark:hover:text-oklch(0.985",
+					"border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
 				secondary:
-					"0 0) 0 0) 0 0) 0 0) 0 0) 0 0) 0 0) 0 0) bg-oklch(0.97 text-oklch(0.205 hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-oklch(0.97 aria-expanded:text-oklch(0.205 dark:bg-oklch(0.269 dark:text-oklch(0.985 dark:aria-expanded:bg-oklch(0.269 dark:aria-expanded:text-oklch(0.985",
+					"bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
 				ghost:
-					"0 0) 0 0) 0 0) 0 0) 0 0)/50 0 0) 0 0) 0 0) 0 0) 0 0)/50 hover:bg-oklch(0.97 hover:text-oklch(0.145 aria-expanded:bg-oklch(0.97 aria-expanded:text-oklch(0.145 dark:aria-expanded:bg-oklch(0.269 dark:aria-expanded:text-oklch(0.985 dark:dark:hover:bg-oklch(0.269 dark:hover:bg-oklch(0.269 dark:hover:bg-oklch(0.97 dark:hover:text-oklch(0.985",
+					"hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
 				destructive:
-					"0.245 27.325)/10 0.245 27.325) 0.245 27.325)/20 0.245 27.325)/40 0.245 27.325)/20 0.245 27.325)/20 0.245 27.325)/30 0.245 27.325)/40 0.191 22.216)/10 0.191 22.216) 0.191 22.216)/20 0.191 22.216)/40 0.191 22.216)/20 0.191 22.216)/20 0.191 22.216)/30 0.191 22.216)/40 bg-oklch(0.577 text-oklch(0.577 hover:bg-oklch(0.577 focus-visible:border-oklch(0.577 focus-visible:ring-oklch(0.577 dark:bg-oklch(0.577 dark:bg-oklch(0.704 dark:dark:bg-oklch(0.704 dark:text-oklch(0.704 dark:focus-visible:border-oklch(0.704 dark:dark:focus-visible:ring-oklch(0.704 dark:focus-visible:ring-oklch(0.577 dark:focus-visible:ring-oklch(0.704 dark:dark:hover:bg-oklch(0.704 dark:hover:bg-oklch(0.577 dark:hover:bg-oklch(0.704",
-				link: "0 0) 0 0) text-oklch(0.205 underline-offset-4 hover:underline dark:text-oklch(0.922",
+					"bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:focus-visible:ring-destructive/40 dark:hover:bg-destructive/30",
+				link: "text-primary underline-offset-4 hover:underline",
 			},
 			size: {
 				default:

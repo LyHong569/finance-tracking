@@ -193,9 +193,7 @@ export const TransactionPagination: React.FC<TransactionPaginationProps> = ({
 				to{" "}
 				<span className="font-semibold text-foreground">
 					{Math.min(currentPage * itemsPerPage, totalItems)}
-				</span>{" "}
-				of <span className="font-semibold text-foreground">{totalItems}</span>{" "}
-				entries
+				</span>
 			</div>
 
 			<ButtonGroup>
@@ -207,7 +205,7 @@ export const TransactionPagination: React.FC<TransactionPaginationProps> = ({
 					className="h-8 px-2.5 text-neutral text-xs hover:text-foreground"
 				>
 					<IconChevronLeft className="mr-1 size-3.5" />
-					Previous
+					Prev
 				</Button>
 
 				{Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (

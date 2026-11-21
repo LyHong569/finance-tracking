@@ -951,6 +951,11 @@
   dependencies:
     ws "^8.18.3"
 
+"@tanstack/devtools-event-client@^0.4.1":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@tanstack/devtools-event-client/-/devtools-event-client-0.4.4.tgz#c58185e737bee28b3afce206509412225e9f9031"
+  integrity sha512-6T5Yop/793YI+H+5J8Hsyj4kCih9sl4t3ElLgKioW5hk3ocn+ZdSJ94tT7vL7uabxSugWYBZlOTMPzEw2puvQw==
+
 "@tanstack/devtools-event-client@^0.5.0":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@tanstack/devtools-event-client/-/devtools-event-client-0.5.1.tgz#83e41475d4443e9abe3eb8ae6fb7e526b46f999b"
@@ -993,10 +998,24 @@
     goober "^2.1.16"
     solid-js "^1.9.13"
 
+"@tanstack/form-core@1.33.5":
+  version "1.33.5"
+  resolved "https://registry.yarnpkg.com/@tanstack/form-core/-/form-core-1.33.5.tgz#d23bba22e6cf86722e674cbcc7c4be1d328787df"
+  integrity sha512-3dfx9MBP0aq5sXKteikG629X9oviptrQj0IFRk9YGcb+lB7Kv5x8S17oOSk1wUWgjQZ4xVJEMbKwOAODymocgA==
+  dependencies:
+    "@tanstack/devtools-event-client" "^0.4.1"
+    "@tanstack/pacer-lite" "^0.1.1"
+    "@tanstack/store" "^0.11.0"
+
 "@tanstack/history@1.162.5":
   version "1.162.5"
   resolved "https://registry.yarnpkg.com/@tanstack/history/-/history-1.162.5.tgz#967cb42b2e33fb1a45cb6d17a561c9223567a0f3"
   integrity sha512-w1+YvwmTkwt5n8yUqEH3IWZ9DsmorCZW/EQ3KYHnqEgIkOZpH54NvW6/Epq3Dzb8H0ifIeYX8PExvrNLIH5FIA==
+
+"@tanstack/pacer-lite@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/pacer-lite/-/pacer-lite-0.1.1.tgz#431d3b0ac871280e8326fdbf156bb171d9bb0aa3"
+  integrity sha512-y/xtNPNt/YeyoVxE/JCx+T7yjEzpezmbb+toK8DDD1P4m7Kzs5YR956+7OKexG3f8aXgC3rLZl7b1V+yNUSy5w==
 
 "@tanstack/react-devtools@0.10.14":
   version "0.10.14"
@@ -1004,6 +1023,14 @@
   integrity sha512-wFoNpqiU03MDbY1RljhX4vMUoGWwqpa5AZthWEaJRrojBFWFoB57lzzIM5r+EPGi+BsEX+OcXkn8Zkfoe4hGiA==
   dependencies:
     "@tanstack/devtools" "0.16.0"
+
+"@tanstack/react-form@^1.33.5":
+  version "1.33.5"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-form/-/react-form-1.33.5.tgz#82611f492b3fac3e8f96b8edd2bcafc0a9a511ba"
+  integrity sha512-LlRB28qJwO/QCGaHvWnbdh4haBgTFiZVmzA2uzxSBS3YA7/IqrQ6HOBK70CkFQ+DbflZ7NawsmSln13h5iIdTA==
+  dependencies:
+    "@tanstack/form-core" "1.33.5"
+    "@tanstack/react-store" "^0.11.0"
 
 "@tanstack/react-router-devtools@1.167.3":
   version "1.167.3"
@@ -1022,7 +1049,7 @@
     "@tanstack/router-core" "1.171.39"
     isbot "^5.1.22"
 
-"@tanstack/react-store@^0.11.2":
+"@tanstack/react-store@^0.11.0", "@tanstack/react-store@^0.11.2":
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/@tanstack/react-store/-/react-store-0.11.2.tgz#14f81f98f43b04c34e76d348de3fe8488b3c3939"
   integrity sha512-oj5O5DmiMWE+ih+SioX2ayC1kbK7d3fpLx0B75fPJr9nY3zU+hoW010yr64qXsY/9fyiLVE2bn5mGNV3owm8RQ==
@@ -1100,7 +1127,7 @@
     pathe "^2.0.3"
     tinyglobby "^0.2.17"
 
-"@tanstack/store@0.11.2":
+"@tanstack/store@0.11.2", "@tanstack/store@^0.11.0":
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/@tanstack/store/-/store-0.11.2.tgz#cea02e554a483c7334a64a3ca2c0e4b703ba8531"
   integrity sha512-sJ4mjol8uQsHV0gOJzzjwXfh2Fwm+Sz0+8deqiTm4jGbMdjzNSW+xZCFm0kUa870uhd8yi+DpKnZb5Kc4apa0Q==
@@ -1369,7 +1396,7 @@ csstype@^3.1.0, csstype@^3.2.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.2.4.tgz#e3c565add00793c36f089cc14b70d04d784daa19"
   integrity sha512-PoKaoPzQapnEoqUSnHx1u6W6ku8CVEgKsnpmmzU3m1nwkidpPBQ8V/Zq2+bWNrsOKoKLwTGdbx6xF7BXP1zLVQ==
 
-dayjs@^1.11.19:
+dayjs@^1.11.19, dayjs@^1.11.23:
   version "1.11.23"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.23.tgz#b0a363506dde5f36cf5075e42ebe8115165a8c79"
   integrity sha512-QDTCU0M0MxR3hQfnlDJfwekQiaanm1ubOD231u73WBckQ/fsamwRLiE2GBz6D3a/xF1NgfiDLJjXBa1hYOYTtQ==
@@ -2685,7 +2712,7 @@ yoctocolors@^2.1.1:
   resolved "https://registry.yarnpkg.com/yoctocolors/-/yoctocolors-2.2.0.tgz#c4b68ee477f3982c33e4de24a5aa4a354be506d3"
   integrity sha512-xYqdZFUK/VYazNl/oCDYN+3WloWQwMfZxBoiNt6qNyk+xfOdi598muWE42rNZFp1kNOiqW936q5RhUdnpqElSg==
 
-zod@^4.2.0, zod@^4.5.4:
+zod@^4.2.0, zod@^4.5.4, zod@^4.6.7:
   version "4.6.7"
   resolved "https://registry.yarnpkg.com/zod/-/zod-4.6.7.tgz#e806cf64a7f4e37635ce9f2f52c04c3766f75e5b"
   integrity sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==

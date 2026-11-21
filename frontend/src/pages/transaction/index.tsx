@@ -7,18 +7,32 @@ import {
 	IconShoppingCart,
 	IconToolsKitchen2,
 	IconTrendingUp,
+	IconX,
 } from "@tabler/icons-react";
+import type React from "react";
 import { useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import {
+	Drawer,
+	DrawerClose,
+	DrawerContent,
+	DrawerDescription,
+	DrawerHeader,
+	DrawerTitle,
+	DrawerTrigger,
+} from "@/components/ui/drawer";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { TransactionFilterSection } from "@/modules/transactions/components/transaction-filter-section";
+import { TransactionForm } from "@/modules/transactions/components/transaction-form";
+import { TransactionStats } from "@/modules/transactions/components/transaction-stats";
 import {
 	TransactionPagination,
 	TransactionTable,
 } from "@/modules/transactions/components/transaction-table";
 import type { Transaction } from "@/modules/transactions/interface";
 
-const MOCK_TRANSACTIONS: Transaction[] = [
+const INITIAL_TRANSACTIONS: Transaction[] = [
 	{
 		id: "TX-9021",
 		category: "Salary",
@@ -120,6 +134,9 @@ const MOCK_TRANSACTIONS: Transaction[] = [
 const ITEMS_PER_PAGE = 5;
 
 export default function TransactionPage() {
+	const [transactions, setTransactions] =
+		useState<Transaction[]>(INITIAL_TRANSACTIONS);
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 	const [searchQuery, setSearchQuery] = useState("");
 	const [selectedCategory, setSelectedCategory] = useState("ALL");
 	const [selectedWallet, setSelectedWallet] = useState("ALL");
@@ -129,20 +146,27 @@ export default function TransactionPage() {
 	const [currentPage, setCurrentPage] = useState(1);
 
 	const categories = useMemo(() => {
-		const unique = Array.from(
-			new Set(MOCK_TRANSACTIONS.map((t) => t.category)),
-		);
+		const unique = Array.from(new Set(transactions.map((t) => t.category)));
 		return ["ALL", ...unique];
-	}, []);
+	}, [transactions]);
 
 	const wallets = useMemo(() => {
-		const unique = Array.from(new Set(MOCK_TRANSACTIONS.map((t) => t.wallet)));
+		const unique = Array.from(new Set(transactions.map((t) => t.wallet)));
 		return ["ALL", ...unique];
-	}, []);
+	}, [transactions]);
+
+	const handleCreateTransaction = (newTx: Omit<Transaction, "id">) => {
+		const created: Transaction = {
+			id: `TX-${Math.floor(1000 + Math.random() * 9000)}`,
+			...newTx,
+		};
+		setTransactions((prev) => [created, ...prev]);
+		setIsDrawerOpen(false);
+	};
 
 	// Filter transactions
 	const filteredTransactions = useMemo(() => {
-		return MOCK_TRANSACTIONS.filter((item) => {
+		return transactions.filter((item) => {
 			const matchesSearch =
 				item.note.toLowerCase().includes(searchQuery.toLowerCase()) ||
 				item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -158,7 +182,13 @@ export default function TransactionPage() {
 
 			return matchesSearch && matchesCategory && matchesWallet && matchesType;
 		});
-	}, [searchQuery, selectedCategory, selectedWallet, selectedType]);
+	}, [
+		transactions,
+		searchQuery,
+		selectedCategory,
+		selectedWallet,
+		selectedType,
+	]);
 
 	const totalPages =
 		Math.ceil(filteredTransactions.length / ITEMS_PER_PAGE) || 1;
@@ -202,6 +232,9 @@ export default function TransactionPage() {
 			<TransactionHeader
 				title="Transactions"
 				description="Keep track of your daily multi-account transactions and cash flow."
+				isDrawerOpen={isDrawerOpen}
+				onDrawerOpenChange={setIsDrawerOpen}
+				onCreateTransaction={handleCreateTransaction}
 			/>
 
 			<TransactionStats
@@ -256,15 +289,24 @@ export default function TransactionPage() {
 	);
 }
 
-function TransactionHeader({
-	title,
-	description,
-	onNewEntry,
-}: {
+interface TransactionHeaderProps {
 	title: string;
 	description?: string;
-	onNewEntry?: () => void;
-}) {
+	isDrawerOpen: boolean;
+	onDrawerOpenChange: (open: boolean) => void;
+	onCreateTransaction: (data: Omit<Transaction, "id">) => void;
+}
+
+const TransactionHeader: React.FC<TransactionHeaderProps> = ({
+	title,
+	description,
+	isDrawerOpen,
+	onDrawerOpenChange,
+	onCreateTransaction,
+}) => {
+	const isMobile = useIsMobile();
+	const swipeDirection = isMobile ? "down" : "right";
+
 	return (
 		<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 			<div>
@@ -276,54 +318,49 @@ function TransactionHeader({
 				)}
 			</div>
 
-			<div className="flex items-center gap-2">
-				<Button
-					onClick={onNewEntry}
-					className="bg-primary text-white shadow-primary/20 shadow-sm hover:bg-primary/90"
+			<Drawer
+				open={isDrawerOpen}
+				onOpenChange={onDrawerOpenChange}
+				showSwipeHandle={isMobile}
+				swipeDirection={swipeDirection}
+			>
+				<DrawerTrigger
+					render={
+						<Button className="bg-primary text-white shadow-primary/20 shadow-sm hover:bg-primary/90" />
+					}
 				>
 					<IconPlus stroke={2} className="mr-1.5 size-4" />
 					<span>New Entry</span>
-				</Button>
-			</div>
-		</div>
-	);
-}
+				</DrawerTrigger>
 
-function TransactionStats({
-	count,
-	totalIncome,
-	totalExpense,
-}: {
-	count: number;
-	totalIncome: number;
-	totalExpense: number;
-}) {
-	return (
-		<div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-			<div className="rounded-xl border border-border bg-card p-4">
-				<span className="font-medium text-neutral text-xs uppercase tracking-wider">
-					Total Volume
-				</span>
-				<div className="mt-1 font-bold text-foreground text-xl">
-					{count} Entries
-				</div>
-			</div>
-			<div className="rounded-xl border border-border bg-card p-4">
-				<span className="font-medium text-neutral text-xs uppercase tracking-wider">
-					Total Inflow
-				</span>
-				<div className="mt-1 font-bold text-primary text-xl">
-					+${totalIncome.toLocaleString("en-US", { minimumFractionDigits: 2 })}
-				</div>
-			</div>
-			<div className="rounded-xl border border-border bg-card p-4">
-				<span className="font-medium text-neutral text-xs uppercase tracking-wider">
-					Total Outflow
-				</span>
-				<div className="mt-1 font-bold text-foreground text-xl">
-					-${totalExpense.toLocaleString("en-US", { minimumFractionDigits: 2 })}
-				</div>
-			</div>
+				<DrawerContent className="overflow-hidden">
+					<DrawerHeader>
+						<div>
+							<DrawerTitle>New Transaction</DrawerTitle>
+							<DrawerDescription>
+								Record an income or expense to your financial accounts.
+							</DrawerDescription>
+						</div>
+						<DrawerClose
+							render={
+								<Button
+									variant="ghost"
+									size="icon"
+									className="size-8 rounded-full text-neutral hover:text-foreground"
+								/>
+							}
+						>
+							<IconX className="size-4" />
+							<span className="sr-only">Close</span>
+						</DrawerClose>
+					</DrawerHeader>
+
+					<TransactionForm
+						onSubmit={onCreateTransaction}
+						onCancel={() => onDrawerOpenChange(false)}
+					/>
+				</DrawerContent>
+			</Drawer>
 		</div>
 	);
-}
+};

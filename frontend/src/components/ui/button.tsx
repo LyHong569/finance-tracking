@@ -55,3 +55,5 @@ function Button({
 }
 
 export { Button, buttonVariants };
+
+export { ButtonGroup } from "@/components/ui/button-group";

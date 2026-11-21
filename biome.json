@@ -43,6 +43,15 @@
 		"enabled": true,
 		"rules": {
 			"recommended": true,
+			"a11y": {
+				"useSemanticElements": "off"
+			},
+			"style": {
+				"noNonNullAssertion": "warn"
+			},
+			"suspicious": {
+				"noDocumentCookie": "warn"
+			},
 			"nursery": {
 				"useSortedClasses": {
 					"level": "warn",

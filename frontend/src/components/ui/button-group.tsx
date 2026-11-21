@@ -48,7 +48,7 @@ function ButtonGroupText({
 		props: mergeProps<"div">(
 			{
 				className: cn(
-					"0 0) 0 0) 0 0 / 10%) 0 0) flex items-center gap-2 rounded-lg border border-oklch(0.922 bg-oklch(0.97 px-2.5 font-medium text-sm dark:border-oklch(1 dark:bg-oklch(0.269 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
+					"flex items-center gap-2 rounded-lg border border-border bg-muted/50 px-2.5 font-medium text-sm [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
 					className,
 				),
 			},
@@ -71,7 +71,7 @@ function ButtonGroupSeparator({
 			data-slot="button-group-separator"
 			orientation={orientation}
 			className={cn(
-				"0 0) 0 0 / 15%) relative self-stretch bg-oklch(0.922 data-horizontal:mx-px data-vertical:my-px data-vertical:h-auto data-horizontal:w-auto dark:bg-oklch(1",
+				"relative self-stretch bg-border data-horizontal:mx-px data-vertical:my-px data-vertical:h-auto data-horizontal:w-auto",
 				className,
 			)}
 			{...props}

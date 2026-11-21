@@ -70,7 +70,7 @@ export const TransactionFilterSection: React.FC<Props> = (props) => {
 						value={selectedCategory}
 						onValueChange={(val) => onCategoryChange(val as string)}
 					>
-						<SelectTrigger className="h-9 min-w-37.5 bg-background">
+						<SelectTrigger className="h-9! min-w-37.5 bg-background">
 							<SelectValue placeholder="All Categories" />
 						</SelectTrigger>
 						<SelectContent alignItemWithTrigger={false}>
@@ -86,7 +86,7 @@ export const TransactionFilterSection: React.FC<Props> = (props) => {
 						value={selectedWallet}
 						onValueChange={(val) => onWalletChange(val as string)}
 					>
-						<SelectTrigger className="h-9 min-w-35 bg-background">
+						<SelectTrigger className="h-9! min-w-35 bg-background">
 							<SelectValue placeholder="All Wallets" />
 						</SelectTrigger>
 						<SelectContent alignItemWithTrigger={false}>
